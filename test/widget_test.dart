@@ -1,13 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutter_application_2/main.dart';
+import 'package:paddle_provisions/app.dart';
 
 void main() {
-  testWidgets('shows the static Instagram-inspired screen', (tester) async {
-    await tester.pumpWidget(const MyApp());
+  testWidgets('shows the paddle product browser', (tester) async {
+    await tester.pumpWidget(const PaddleProvisionsApp());
+    await tester.pumpAndSettle();
 
-    expect(find.text('Instagram'), findsOneWidget);
-    expect(find.text('username'), findsNWidgets(2));
-    expect(find.text('10,547 Likes'), findsOneWidget);
+    expect(find.text('PADDLE PROVISIONS'), findsOneWidget);
+    expect(find.text('Featured paddles'), findsOneWidget);
+    expect(find.text('LUXX Control Air'), findsOneWidget);
   });
 }
