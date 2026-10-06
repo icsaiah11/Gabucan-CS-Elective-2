@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'providers/pokemon_provider.dart';
 import 'screens/pokedex_screen.dart';
-import 'services/pokemon_service.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => PokemonProvider()..fetchPokemon(),
+      child: const MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,7 +33,7 @@ class MyApp extends StatelessWidget {
           color: Color(0xFF1565C0),
         ),
       ),
-      home: PokedexScreen(service: PokemonService()),
+      home: const PokedexScreen(),
     );
   }
 }
