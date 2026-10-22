@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'providers/pokemon_provider.dart';
 import 'screens/pokedex_screen.dart';
 
 void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => PokemonProvider()..fetchPokemon(),
-      child: const MyApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
